@@ -4,17 +4,32 @@ import {
   View, Text, TextInput, TouchableOpacity, SafeAreaView,
 } from 'react-native';
 
+import PropTypes from 'prop-types';
 import styles from './styles';
+
+import {} from 'redux-saga';
 
 export default class Main extends Component {
   static navigationOptions = {
     header: null,
   };
 
+  static propTypes = {
+    navigation: PropTypes.shape({
+      navigate: PropTypes.func,
+    }).isRequired,
+  };
+
+  state = {
+    repoInputName: '',
+  };
+
   navigationToFavorite = () => {
     console.tron.log('clicado');
     this.props.navigation.navigate('Favorite');
   };
+
+  addRepository() {}
 
   render() {
     return (
@@ -31,8 +46,14 @@ export default class Main extends Component {
               autoCorrect={false}
               underlineColorAndroid="transparent"
               placeholder="usuario/repositório"
+              value={this.state.repoInputName}
+              onChange={inputname => this.setState({ repoInputName })}
             />
-            <TouchableOpacity style={styles.button} activeOpacity={0.6} onPress={() => {}}>
+            <TouchableOpacity
+              style={styles.button}
+              activeOpacity={0.6}
+              onPress={this.addRepository}
+            >
               <Text style={styles.buttonTitle}>Adicionar favoritos</Text>
             </TouchableOpacity>
           </View>

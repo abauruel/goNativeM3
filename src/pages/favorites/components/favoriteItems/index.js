@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { View, Text, Image } from 'react-native';
-import styles from 'styles';
+import styles from './styles';
 
 const FavoriteItems = ({ favorite: { name, owner, description } }) => (
   <View style={styles.container}>
